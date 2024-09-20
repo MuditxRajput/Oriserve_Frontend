@@ -10,7 +10,9 @@ import VersionsPage from "../../../../Components/VersionsPage/page.jsx";
 import PackageInfo from "../../../../Components/info/page.jsx";
 import useVersionSearch from "../../../../hooks/useVersionSearch.js";
 import formatDate from "../../../../utils/formatData.js";
+import { useRouter } from "next/navigation";
 const PackageVersion = () => {
+    const router = useRouter();
     const params = useParams();
     const {version} = params;
     useVersionSearch(version);
@@ -19,7 +21,7 @@ const PackageVersion = () => {
     const data =["Readme","Code","Dependencies","Dependents","Versions"]
     const[activeTab,setActiveTab] = useState("Readme")
     const versionData = useSelector((state)=>state.search.version);
-    if (!searchResults || !versionData) {
+    if (!singleSearch || !versionData) {
       return (
         <div className="flex items-center justify-center h-screen">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
