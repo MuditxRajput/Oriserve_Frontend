@@ -6,7 +6,7 @@ const Keywords = memo(() => {
     const keywords = useSelector((state) => state.search?.singleSearch?.keywords);
 
     if (!keywords || keywords.length === 0) {
-        return null; // Don't render anything if there are no keywords
+        return "none"; // Don't render anything if there are no keywords
     }
 
     return (

@@ -31,11 +31,11 @@ const PackageInfo = () => {
 
     const renderInfoItem = (title, value, link = null) => (
         <div className="mb-4">
-            <h2 className="text-lg text-gray-500 mb-1 font-semibold">{title}</h2>
+            <h2 className="text-md text-gray-500 mb-1 font-semibold">{title}</h2>
             {link ? (
                 <a href={link} className="text-sm text-black font-semibold flex items-center">
                     {value === 'Repository' ? <ImGit size={20} className="mr-1" /> : <FaLink size={20} className="mr-1" />}
-                    <p className='text-lg'>{getUrl(link)}</p>
+                    <p className='text-md'>{getUrl(link)}</p>
                 </a>
             ) : (
                 <p className="font-semibold">{value || 'N/A'}</p>

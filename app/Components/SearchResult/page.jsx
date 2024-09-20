@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState, useMemo, useCallback } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { IoPersonCircle } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import useSearchQueryHook from "../../hooks/useSearchQueryHook.js";
@@ -61,8 +61,8 @@ const SearchResult = () => {
           currentPage={currentPage}
         />
       </div>
-      <div className="flex gap-10">
-        <div className="flex flex-col w-[500px] ml-10 gap-4">
+      <div className="flex gap-8">
+        <div className="flex  flex-col w-1/5 p-4 gap-4 px-10">
           <h3 className="font-semibold text-md">Sort Packages</h3>
           {["optimal", "popularity", "quality", "maintenance"].map((option) => (
             <label key={option} className="radio-option">
@@ -72,11 +72,11 @@ const SearchResult = () => {
             </label>
           ))}
         </div>
-        <div className="mt-4 p-2">
+        <div className="w-3/4 mt-4">
           {currentItems.map((result) => (
             <div
               key={result.package.name}
-              className="flex flex-col border-b-2 border-gray-300 p-1 gap-2"
+              className="flex flex-col border-b-2 border-gray-300 p-4 mb-4 gap-2"
             >
               <div className="flex items-center gap-2">
                 <p 
