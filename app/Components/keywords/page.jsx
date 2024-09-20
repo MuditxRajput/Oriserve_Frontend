@@ -12,8 +12,8 @@ const Keywords = memo(() => {
     return (
         <div className="flex flex-wrap gap-3 mt-5">
             {keywords.map((val, index) => (
-                <div key={index} className="px-3 py-1">
-                    <p className="text-sm font-semibold text-red-600">{val}</p>
+                <div key={index} className="px-3 py-1 ">
+                    <p className="text-lg font-semibold text-red-600">{val}</p>
                 </div>
             ))}
         </div>

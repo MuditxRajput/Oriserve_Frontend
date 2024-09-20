@@ -4,12 +4,17 @@ import { useSelector } from "react-redux";
 import useSingleSearch from "../../../hooks/useSingleSearch";
 import CodePage from "../../CodePage/page";
 // import CodePage from "../../CodePage";
+import { FaFileZipper } from "react-icons/fa6";
+import { FiBox } from "react-icons/fi";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { LuBoxes, LuTags } from "react-icons/lu";
 import formatDate from "../../../utils/formatData.js";
 import Dependencies from "../../Dependencies/page";
 import Dependents from "../../Dependents/page";
 import Readme from "../../Readme/page";
 import VersionsPage from '../../VersionsPage/page';
 import PackageInfo from "../../info/page";
+
 const PackageName = () => {
   useSingleSearch();
   const singleSearch = useSelector((state) => state.search?.singleSearch);
@@ -52,7 +57,8 @@ const PackageName = () => {
             `
           }
           >
-            {item === "Versions" ? `${Object.keys(versions ?? {}).length} ${item}` : item}
+            {item ==="Readme"?<div className="flex gap-2 text-lg items-center"><IoDocumentTextOutline />{item}</div> :item==="Code"?<div className="flex gap-2 text-lg items-center"><FaFileZipper/>{item}</div>:item==="Dependencies"?<div className="flex gap-2 text-lg items-center"><FiBox/>{item}</div>:item==="Dependents"?<div className="flex gap-2 text-lg items-center"><LuBoxes/>{item}</div>:item==="Versions"?<div className="flex gap-2 text-lg  items-center"><LuTags/>{ `${Object.keys(versions ?? {}).length} ${item}`}</div>:""}
+            {/* {item === "Versions" ? `${Object.keys(versions ?? {}).length} ${item}` : item} */}
           </button>
         ))}
       </div>

@@ -1,6 +1,10 @@
 "use client";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
+import { FaFileZipper } from "react-icons/fa6";
+import { FiBox } from "react-icons/fi";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { LuBoxes, LuTags } from "react-icons/lu";
 import { useSelector } from "react-redux";
 import CodePage from "../../../../Components/CodePage/page.jsx";
 import Dependencies from "../../../../Components/Dependencies/page.jsx";
@@ -10,7 +14,6 @@ import VersionsPage from "../../../../Components/VersionsPage/page.jsx";
 import PackageInfo from "../../../../Components/info/page.jsx";
 import useVersionSearch from "../../../../hooks/useVersionSearch.js";
 import formatDate from "../../../../utils/formatData.js";
-import { useRouter } from "next/navigation";
 const PackageVersion = () => {
     const router = useRouter();
     const params = useParams();
@@ -53,7 +56,7 @@ const PackageVersion = () => {
             
           }
           >
-            {item === "Versions" ? `${Object.keys(versions ?? {}).length} ${item}` : item}
+           {item ==="Readme"?<div className="flex gap-2 text-lg items-center"><IoDocumentTextOutline />{item}</div> :item==="Code"?<div className="flex gap-2 text-lg items-center"><FaFileZipper/>{item}</div>:item==="Dependencies"?<div className="flex gap-2 text-lg items-center"><FiBox/>{item}</div>:item==="Dependents"?<div className="flex gap-2 text-lg items-center"><LuBoxes/>{item}</div>:item==="Versions"?<div className="flex gap-2 text-lg  items-center"><LuTags/>{ `${Object.keys(versions ?? {}).length} ${item}`}</div>:""}
           </button>
         ))}
       </div>
