@@ -1,3 +1,4 @@
+"use client"
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   return (
     <div>
