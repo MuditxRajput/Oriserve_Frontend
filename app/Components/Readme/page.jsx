@@ -1,4 +1,4 @@
-
+"use client"
 import ReactMarkdown from 'react-markdown';
 import { useSelector } from 'react-redux';
 import remarkGfm from 'remark-gfm';
