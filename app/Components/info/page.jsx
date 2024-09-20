@@ -1,3 +1,4 @@
+"use client"
 import { Button } from '@/components/ui/button';
 import { Copy } from 'lucide-react';
 import { FaLink } from "react-icons/fa6";
