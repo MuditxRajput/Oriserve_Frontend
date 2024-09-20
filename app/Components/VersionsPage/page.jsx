@@ -8,7 +8,12 @@ const VersionsPage = () => {
 
   // Ensure that singleSearch and relevant fields are present
   if (!singleSearch) {
-    return <div className="text-center py-10">Loading...</div>;
+    return (
+      <div className="text-center py-10">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900 mx-auto mb-4"></div>
+        <p className="text-lg font-semibold animate-pulse">Loading...</p>
+      </div>
+    );
   }
 
   const { versions, "dist-tags": distTags, time } = singleSearch;

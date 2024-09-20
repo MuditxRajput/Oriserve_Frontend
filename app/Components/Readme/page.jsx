@@ -10,9 +10,13 @@ const Readme = () => {
     return (
       <div className="w-full max-w-3xl mx-auto mt-8">
         <div className="p-6 animate-pulse">
-          {/* <p className="text-gray-500 text-center">Waiting for Readme</p> */}
+          <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-5/6 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-2/3 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-3/4"></div>
         </div>
-      </div >
+      </div>
     );
   }
 

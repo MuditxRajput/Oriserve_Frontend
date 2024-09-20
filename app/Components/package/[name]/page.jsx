@@ -11,17 +11,27 @@ import Readme from "../../Readme/page";
 import VersionsPage from '../../VersionsPage/page';
 import PackageInfo from "../../info/page";
 const PackageName = () => {
-
   useSingleSearch();
- const singleSearch = useSelector((state) => state.search?.singleSearch);
-//  console.log(singleSearch.dist-tags.latest);
-   const{versions} = singleSearch
-  const data =["Readme","Code","Dependencies","Dependents","Versions"]
-  const[activeTab,setActiveTab] = useState("Readme")
-  if(!singleSearch) return <div>Loading...</div>
+  const singleSearch = useSelector((state) => state.search?.singleSearch);
+  const { versions } = singleSearch || {};
+  const data = ["Readme", "Code", "Dependencies", "Dependents", "Versions"];
+  const [activeTab, setActiveTab] = useState("Readme");
+
+  if (!singleSearch) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-pulse flex flex-col items-center">
+          <div className="w-32 h-32 bg-gray-300 rounded-full mb-4"></div>
+          <div className="h-4 bg-gray-300 rounded w-48 mb-2"></div>
+          <div className="h-4 bg-gray-300 rounded w-40"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex mx-32   px-10 py-5 flex-col  ">
-      <div >
+    <div className="flex mx-32 px-10 py-5 flex-col">
+      <div>
         <p className="text-2xl font-bold">{singleSearch.name}</p>
         <div className="flex gap-4 items-center mt-1">
           <p className="text-sm font-normal">{singleSearch["dist-tags"]?.latest}</p>
@@ -29,7 +39,7 @@ const PackageName = () => {
           <p>Published {formatDate(singleSearch.time?.modified)}</p>    
         </div>
       </div>
-      <div className="flex  mt-5 ">
+      <div className="flex mt-5">
         {data.map((item, index) => (
           <button
             key={index}
@@ -40,27 +50,24 @@ const PackageName = () => {
             ${item==="Readme"?"text-yellow-800":item==="Code"?"text-red-800":item==="Dependencies"?"text-purple-800":item==="Dependents"?"text-blue-800":item==="Versions"?"text-cyan-800":""}
             ${item==="Readme"&&activeTab==="Readme"?"bg-yellow-100":item==="Code"&&activeTab==="Code"?"bg-red-100":item==="Dependencies"&&activeTab==="Dependencies"?"bg-purple-100":item==="Dependents"&&activeTab==="Dependents"?"bg-blue-100":item==="Versions"&&activeTab==="Versions"?"bg-cyan-100":""}
             `
-            
           }
           >
             {item === "Versions" ? `${Object.keys(versions ?? {}).length} ${item}` : item}
           </button>
         ))}
       </div>
-      <div className="flex gap-2  ">
-      <div className="w-[800px] ">
-        {activeTab === "Readme" && <Readme/>}
-        {activeTab === "Code" && <CodePage />}
-        {activeTab === "Dependencies" && <Dependencies />}
-        {activeTab === "Dependents" && <Dependents />}
-        {activeTab === "Versions" && <VersionsPage />}
+      <div className="flex gap-2">
+        <div className="w-[800px]">
+          {activeTab === "Readme" && <Readme/>}
+          {activeTab === "Code" && <CodePage />}
+          {activeTab === "Dependencies" && <Dependencies />}
+          {activeTab === "Dependents" && <Dependents />}
+          {activeTab === "Versions" && <VersionsPage />}
+        </div>
+        <div className="flex w-[400px] justify-center">
+          <PackageInfo/>
+        </div>
       </div>
-      <div className="flex  w-[400px] justify-center ">
-        <PackageInfo/>
-      </div>
-      </div>
-        
-     
     </div>
   );
 };
